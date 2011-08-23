@@ -17,3 +17,17 @@
 	(println @xs)
 	(reset! n (- @n 1))
 	(when (> @n 0) (recur xs f n)))
+
+;; Getting into Rules
+
+(defn in-range [p]
+	(let [x (first p) y (last p)]
+		(and (>= x 0) (>= y 0) (< x 301) (< x 301))))
+
+ (defn neighbors [p]
+	(let [x (first p) x_1 (- x 1) x1 (+ x 1)
+		y (last p) y_1 (- y 1) y1 (+ y 1)]
+	(filter in-range 
+		#{[x_1 y_1] [x_1 y] [x_1 y1] [x y_1] [x y1] [x1 y_1] [x1 y] [x1 y1]})))
+
+
