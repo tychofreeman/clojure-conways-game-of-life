@@ -38,3 +38,7 @@
 (defn should-regen [p world]
 	(let [n (count (clojure.set/intersection world (neighbors p)))]
 	(= 3 n)))
+
+(defn reanimate-candidates [xs]
+	(let [ns (set (mapcat neighbors xs))]
+		(reduce disj ns xs)))
