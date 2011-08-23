@@ -1,4 +1,4 @@
-(defn frame [xs]
+(defn canvas [xs]
 	(let [f (JFrame.)
 				c (proxy [Canvas] []
 			(update [g]
@@ -7,4 +7,4 @@
         (. f setSize 300 300)
 	(. f add c)
 	(. f setVisible true)
-	f))
+	c))
