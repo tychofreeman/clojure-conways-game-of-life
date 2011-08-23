@@ -35,3 +35,6 @@
 	(let [n (count (clojure.set/intersection world (neighbors p)))]
 	(or (= 3 n) (= 2 n))))
 
+(defn should-regen [p world]
+	(let [n (count (clojure.set/intersection world (neighbors p)))]
+	(= 3 n)))
