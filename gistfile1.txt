@@ -27,8 +27,8 @@
  (defn neighbors [p]
 	(let [x (first p) x_1 (- x 1) x1 (+ x 1)
 		y (last p) y_1 (- y 1) y1 (+ y 1)]
-	(filter in-range 
-		#{[x_1 y_1] [x_1 y] [x_1 y1] [x y_1] [x y1] [x1 y_1] [x1 y] [x1 y1]})))
+	(set (filter in-range 
+		#{[x_1 y_1] [x_1 y] [x_1 y1] [x y_1] [x y1] [x1 y_1] [x1 y] [x1 y1]}))))
 
 
 (defn should-live [p world]
@@ -42,3 +42,14 @@
 (defn reanimate-candidates [xs]
 	(let [ns (set (mapcat neighbors xs))]
 		(reduce disj ns xs)))
+
+; this doesn't quite work
+(defn regens [world]
+	(let [candidates (reanimate-candidates world)]
+	(filter #(should-regen %1 world) candidates)))
+
+; but this seems to:
+
+(let [world  #{[1 0] [1 1] [0 1]}
+      candidates (reanimate-candidates world)]
+	(filter #(should-regen %1 world) candidates))
