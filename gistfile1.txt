@@ -1,0 +1,6 @@
+(let [f (JFrame.)]
+(. f setSize 300 300)
+(. f add (proxy [Canvas] []
+	(paint [g]
+		(doto g (.fillRect 10 10 10 10)))))
+(. f setVisible true))
