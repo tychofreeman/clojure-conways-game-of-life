@@ -32,5 +32,6 @@
 
 
 (defn should-live [p world]
-	(= 3 (count (clojure.set/intersection world (neighbors p)))))
+	(let [n (count (clojure.set/intersection world (neighbors p)))]
+	(or (= 3 n) (= 2 n))))
 
