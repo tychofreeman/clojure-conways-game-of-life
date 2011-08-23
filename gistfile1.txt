@@ -1,10 +1,11 @@
-(let [f (JFrame.)
-		xs (atom #{})
-		c (proxy [Canvas] []
+
+ (defn draw [xs]
+	(let [f (JFrame.)
+				c (proxy [Canvas] []
 			(update [g]
-				(doto g (.clearRect 0 0 300 300)
-					(.fillRect 100 100 10 10))))]
-	(. f setSize 300 300)
+				(doto g (.clearRect 0 0 300 300))
+				(doseq [x xs] (. g fillRect x 100 10 10))))]
+        (. f setSize 300 300)
 	(. f add c)
 	(. f setVisible true)
-	(future (Thread/sleep 10) (.repaint c)))
+	(future (Thread/sleep 10) (.repaint c))))
