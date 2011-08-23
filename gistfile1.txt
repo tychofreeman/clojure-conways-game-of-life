@@ -31,3 +31,6 @@
 		#{[x_1 y_1] [x_1 y] [x_1 y1] [x y_1] [x y1] [x1 y_1] [x1 y] [x1 y1]})))
 
 
+(defn should-live [p world]
+	(= 3 (count (clojure.set/intersection world (neighbors p)))))
+
