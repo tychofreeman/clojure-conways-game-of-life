@@ -8,3 +8,12 @@
 	(. f add c)
 	(. f setVisible true)
 	c))
+
+
+;; Looping with State:
+; ('n' should be set by the frame, or some such...)
+(defn incr [xs f n]
+	(reset! xs (map #(+ 1 %1) @xs))
+	(println @xs)
+	(reset! n (- @n 1))
+	(when (> @n 0) (recur xs f n)))
