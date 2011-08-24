@@ -6,7 +6,7 @@
 				c (proxy [Canvas] []
 			(update [g]
 				(doto g (.clearRect 0 0 300 300))
-				(doseq [x @xs] (. g fillRect (first x) (last x) 10 10))))]
+				(doseq [x @xs] (. g fillRect (* 10 (first x)) (* 10 (last x)) 10 10))))]
         (. f setSize 300 300)
 	(. f add c)
 	(. f setVisible true)
