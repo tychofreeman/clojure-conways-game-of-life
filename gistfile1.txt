@@ -48,8 +48,3 @@
 	(let [candidates (reanimate-candidates world)]
 	(filter #(should-regen %1 world) candidates)))
 
-; but this seems to:
-
-(let [world  #{[1 0] [1 1] [0 1]}
-      candidates (reanimate-candidates world)]
-	(filter #(should-regen %1 world) candidates))
