@@ -50,3 +50,6 @@
 (defn keep-alive [world]
 	(filter #(should-live %1 world) world))
 
+(defn next-gen [world]
+	(clojure.set/union (set (keep-alive world))
+		(set (regens world))))
