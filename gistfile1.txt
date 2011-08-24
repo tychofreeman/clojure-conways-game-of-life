@@ -10,13 +10,13 @@
 	c))
 
 
-;; Looping with State:
-; ('n' should be set by the frame, or some such...)
-(defn incr [xs f n]
-	(reset! xs (map #(+ 1 %1) @xs))
+;; Looping 'n' times with state:
+(defn game-loop [xs f n]
+	(reset! xs (atom (f @xs)))
 	(println @xs)
-	(reset! n (- @n 1))
-	(when (> @n 0) (recur xs f n)))
+	(Thread/sleep 1000)
+	(when (> n 0)
+		(recur xs f (- n 1))))
 
 ;; Getting into Rules
 
