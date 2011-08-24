@@ -43,8 +43,10 @@
 	(let [ns (set (mapcat neighbors xs))]
 		(reduce disj ns xs)))
 
-; this doesn't quite work
 (defn regens [world]
 	(let [candidates (reanimate-candidates world)]
 	(filter #(should-regen %1 world) candidates)))
+
+(defn keep-alive [world]
+	(filter #(should-live %1 world) world))
 
