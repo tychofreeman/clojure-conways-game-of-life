@@ -6,7 +6,7 @@
 				c (proxy [Canvas] []
 			(update [g]
 				(doto g (.clearRect 0 0 300 300))
-				(doseq [x @xs] (. g fillRect x 100 10 10))))]
+				(doseq [x @xs] (. g fillRect (first x) (last x) 10 10))))]
         (. f setSize 300 300)
 	(. f add c)
 	(. f setVisible true)
@@ -14,12 +14,12 @@
 
 
 ;; Looping 'n' times with state:
-(defn game-loop [xs f n]
+(defn game-loop [xs f n canvas]
 	(reset! xs (atom (f @xs)))
-	(println @xs)
+	(.repaint canvas)
 	(Thread/sleep 1000)
-	(when (> n 0)
-		(recur xs f (- n 1))))
+		(when (> n 0)
+		(recur xs f (- n 1) canvas)))
 
 ;; Getting into Rules
 
