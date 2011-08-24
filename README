@@ -1,0 +1,5 @@
+You should be able to run this with 'clojure game-of-life.clj'.
+
+This does not show good style in just about any respect. Yet.
+
+I hope to get the game logic more compact while remaining readable.
