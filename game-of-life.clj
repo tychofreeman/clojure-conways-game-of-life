@@ -76,8 +76,7 @@
 	(= 3 n)))
 
 (defn reanimate-candidates [xs]
-	(let [ns (set (mapcat neighbors xs))]
-		(reduce disj ns xs)))
+        (set/difference (set (mapcat neighbors xs)) xs))
 
 (defn regens [world]
 	(let [candidates (reanimate-candidates world)]
