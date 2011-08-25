@@ -89,8 +89,11 @@
 	(set/union (set (keep-alive world))
 		(set (regens world))))
 
-(let [xs (atom #{[0 2] [1 3] [2 3] [2 2] [2 1]})
-                paused (atom false)
-                clear-xs (atom #{})
-		c (canvas xs clear-xs 1000 1000 paused)]
-	((game-loop 75 paused clear-xs) xs next-gen 20 c))
+(defn run [world]
+  (let [xs (atom world)
+                  paused (atom false)
+                  clear-xs (atom #{})
+                  c (canvas xs clear-xs 1000 1000 paused)]
+          ((game-loop 75 paused clear-xs) xs next-gen 20 c)))
+
+(run #{[0 2] [1 3] [2 3] [2 2] [2 1]})
